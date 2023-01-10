@@ -4,10 +4,10 @@ module Paymongo
                 :attributes,
                 :data
 
-    def initialize(resource)
-      @id = resource['data']['id']
-      @attributes = resource['data']['attributes']
-      @data = resource['data']
+    def initialize(response)
+      @id = response['data']['id']
+      @attributes = response['data']['attributes']
+      @data = response['data']
     end
   end
 end
