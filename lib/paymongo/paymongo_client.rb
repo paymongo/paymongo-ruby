@@ -17,7 +17,7 @@ module Paymongo
         raise StandardError.new(json_response_body['errors'].first['detail'])
       end
 
-      json_response_body
+      Paymongo::ApiResource.new(json_response_body)
     end
 
     def self.initiate_request(method:, params: {}, uri:)

@@ -20,25 +20,25 @@ module Paymongo
                   :created_at,
                   :updated_at
 
-      def initialize(resource)
-        @id = resource['data']['id']
-        @amount = resource['data']['attributes']['amount']
-        @capture_type = resource['data']['attributes']['capture_type']
-        @client_key = resource['data']['attributes']['client_key']
-        @currency = resource['data']['attributes']['currency']
-        @description = resource['data']['attributes']['description']
-        @livemode = resource['data']['attributes']['livemode']
-        @statement_descriptor = resource['data']['attributes']['statement_descriptor']
-        @status = resource['data']['attributes']['status']
-        @last_payment_error = resource['data']['attributes']['last_payment_error']
-        @payment_method_allowed = resource['data']['attributes']['payment_method_allowed']
-        @payments = resource['data']['attributes']['payments']
-        @next_action = resource['data']['attributes']['next_action']
-        @payment_method_options = resource['data']['attributes']['payment_method_options']
-        @metadata = resource['data']['attributes']['metadata']
-        @setup_future_usage = resource['data']['attributes']['setup_future_usage']
-        @created_at = resource['data']['attributes']['created_at']
-        @updated_at = resource['data']['attributes']['updated_at']
+      def initialize(api_resource)
+        @id = api_resource.id
+        @amount = api_resource.attributes['amount']
+        @capture_type = api_resource.attributes['capture_type']
+        @client_key = api_resource.attributes['client_key']
+        @currency = api_resource.attributes['currency']
+        @description = api_resource.attributes['description']
+        @livemode = api_resource.attributes['livemode']
+        @statement_descriptor = api_resource.attributes['statement_descriptor']
+        @status = api_resource.attributes['status']
+        @last_payment_error = api_resource.attributes['last_payment_error']
+        @payment_method_allowed = api_resource.attributes['payment_method_allowed']
+        @payments = api_resource.attributes['payments']
+        @next_action = api_resource.attributes['next_action']
+        @payment_method_options = api_resource.attributes['payment_method_options']
+        @metadata = api_resource.attributes['metadata']
+        @setup_future_usage = api_resource.attributes['setup_future_usage']
+        @created_at = api_resource.attributes['created_at']
+        @updated_at = api_resource.attributes['updated_at']
       end
     end
   end

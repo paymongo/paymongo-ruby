@@ -1,13 +1,13 @@
 module Paymongo
   class BaseService
     def self.request(method:, object:, path:, payload: {})
-      response = Paymongo::PaymongoClient.execute_request(
+      api_resource = Paymongo::PaymongoClient.execute_request(
         method: method,
         params: payload,
         path: path
       )
 
-      object.new(response)
+      object.new(api_resource)
     end
   end
 end

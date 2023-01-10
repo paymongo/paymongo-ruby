@@ -11,7 +11,7 @@ module Paymongo
       )
     end
 
-    def self.retrieve(id:)
+    def self.retrieve(id)
       self.request(
         method: :get,
         object: Paymongo::Entities::PaymentIntent,

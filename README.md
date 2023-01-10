@@ -42,7 +42,7 @@ require 'paymongo'
 Paymongo.api_key = 'sk_test_...'
 
 # retrieve payment intent
-Paymongo::PaymentIntent.retrieve(id: 'pi_...')
+Paymongo::PaymentIntent.retrieve('pi_...')
 
 # create payment intent
 payment_intent = Paymongo::PaymentIntent.create(
