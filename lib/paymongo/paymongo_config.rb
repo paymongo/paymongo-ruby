@@ -2,8 +2,8 @@ module Paymongo
   class PaymongoConfig
     attr_accessor :api_key
 
-    attr_reader :api_base_url
-    attr_reader :api_version
+    attr_reader :api_base_url,
+                :api_version
 
     def self.setup
       new.tap do |instance|

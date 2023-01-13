@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = "paymongo"
-  s.version     = "0.0.0"
+  s.version     = "0.1.0"
   s.summary     = "PayMongo Ruby"
   s.description = "PayMongo Ruby Library"
   s.author      = "PayMongo"
@@ -15,6 +15,6 @@ Gem::Specification.new do |s|
     "lib/paymongo/services/base_service.rb",
     "lib/paymongo/services/payment_intent.rb",
   ]
-  s.homepage    = "https://rubygems.org/gems/paymongo-ruby"
+  s.homepage    = "https://developers.paymongo.com/docs/introduction"
   s.license     = "MIT"
 end

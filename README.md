@@ -32,7 +32,7 @@ gem build paymongo.gemspec
 ## Usage
 
 The library needs to be configured with your account's secret key which is
-available in your [Paymongo Dashboard][api-keys]. Initialize the library to its
+available in your [PayMongo Dashboard][api-keys]. Initialize the library to its
 value:
 
 ```ruby
