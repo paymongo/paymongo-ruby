@@ -59,6 +59,27 @@ payment_intent.id
 # retrieve payment intent status attribute
 payment_intent.status
  => "awaiting_payment_method"
+
+# retrieve payment method
+Paymongo::PaymentMethod.retrieve('pm_BhBBmUpQrbkFquBdBL5JxhuG')
+
+# create payment method
+payment_method = Paymongo::PaymentMethod.create({
+  type: 'gcash',
+  billing: {
+    "address": {
+      "line1": "test line 1",
+      "line2": "test line 2",
+      "city": "Antipolo",
+      "state": "Rizal",
+      "postal_code": "1870",
+      "country": "PH"
+    },
+    "email": "travis-spd@gmail.comm",
+    "name": "John Dog",
+    "phone": "09123456789"
+  }
+})
 ```
 
 ## Verifying webhook signature
