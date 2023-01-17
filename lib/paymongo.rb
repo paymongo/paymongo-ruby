@@ -12,6 +12,8 @@ require 'paymongo/entities/payment_method'
 require 'paymongo/entities/refund'
 require 'paymongo/entities/webhook'
 
+require 'paymongo/entities/attributes/payment_intents/next_action'
+
 require 'paymongo/api_resource'
 require 'paymongo/paymongo_client'
 require 'paymongo/paymongo_config'
