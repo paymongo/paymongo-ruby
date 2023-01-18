@@ -7,6 +7,7 @@ require 'paymongo/entities/billing_entity'
 require 'paymongo/entities/payment_intent'
 require 'paymongo/entities/payment_method'
 require 'paymongo/entities/refund'
+require 'paymongo/entities/webhook'
 
 require 'paymongo/api_resource'
 require 'paymongo/paymongo_client'
@@ -16,6 +17,7 @@ require 'paymongo/services/base_service'
 require 'paymongo/services/payment_intent'
 require 'paymongo/services/payment_method'
 require 'paymongo/services/refund'
+require 'paymongo/services/webhook'
 
 module Paymongo
   @config = Paymongo::PaymongoConfig.setup

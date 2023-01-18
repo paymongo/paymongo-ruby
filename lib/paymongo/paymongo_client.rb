@@ -4,7 +4,7 @@ module Paymongo
       uri = URI("#{Paymongo.config.api_base_url}/#{Paymongo.config.api_version}/#{path}")
 
       request = self.initiate_request(method: method, params: params, uri: uri)
-      
+
       request.basic_auth Paymongo.config.api_key, ''
 
       response = Net::HTTP.start(uri.host, uri.port, :use_ssl => true) do |http|
@@ -26,6 +26,10 @@ module Paymongo
         request = Net::HTTP::Get.new(uri)
       when :post
         request = Net::HTTP::Post.new(uri)
+        request.body = { data: { attributes: params } }.to_json
+        request.set_content_type('application/json')
+      when :put
+        request = Net::HTTP::Put.new(uri)
         request.body = { data: { attributes: params } }.to_json
         request.set_content_type('application/json')
       end

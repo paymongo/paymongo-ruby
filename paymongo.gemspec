@@ -12,6 +12,7 @@ Gem::Specification.new do |s|
     "lib/paymongo/entities/payment_intent.rb",
     "lib/paymongo/entities/payment_method.rb",
     "lib/paymongo/entities/refund.rb",
+    "lib/paymongo/entities/webhook.rb",
     "lib/paymongo/api_resource.rb",
     "lib/paymongo/paymongo_client.rb",
     "lib/paymongo/paymongo_config.rb",
@@ -19,6 +20,7 @@ Gem::Specification.new do |s|
     "lib/paymongo/services/payment_intent.rb",
     "lib/paymongo/services/payment_method.rb",
     "lib/paymongo/services/refund.rb",
+    "lib/paymongo/services/webhook.rb",
   ]
   s.homepage    = "https://developers.paymongo.com/docs/introduction"
   s.license     = "MIT"

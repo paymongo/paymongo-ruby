@@ -91,6 +91,21 @@ Paymongo::Refund.create(
   reason: 'requested_by_customer',
   metadata: {
     merchant: 'test value'
+
+# retrieve webhook
+Paymongo::Webhook.retrieve('hook_W5thFLFVmWDze1kMR7EB4o2c')
+
+# create webhook
+webhook = Paymongo::Webhook.create(
+  url: 'http://localhost:3100/webhook',
+  events: ['payment.refunded', 'payment.refund.updated']
+)
+
+# update webhook
+webhook = Paymongo::Webhook.update('hook_W5thFLFVmWDze1kMR7EB4o2c',
+  {
+      url: 'http://localhost:3101/webhook',
+      events: ['payment.paid']
   }
 )
 ```
