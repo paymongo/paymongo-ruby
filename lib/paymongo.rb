@@ -4,6 +4,7 @@ require 'forwardable'
 
 require 'paymongo/entities/base_entity'
 require 'paymongo/entities/billing_entity'
+require 'paymongo/entities/payment'
 require 'paymongo/entities/payment_intent'
 require 'paymongo/entities/payment_method'
 
@@ -12,6 +13,7 @@ require 'paymongo/paymongo_client'
 require 'paymongo/paymongo_config'
 
 require 'paymongo/services/base_service'
+require 'paymongo/services/payment'
 require 'paymongo/services/payment_intent'
 require 'paymongo/services/payment_method'
 

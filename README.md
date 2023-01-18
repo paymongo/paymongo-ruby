@@ -41,6 +41,9 @@ require 'paymongo'
 # set api key config
 Paymongo.api_key = 'sk_test_...'
 
+# retrieve payment
+Paymongo::Payment.retrieve('pay_...')
+
 # retrieve payment intent
 Paymongo::PaymentIntent.retrieve('pi_...')
 
