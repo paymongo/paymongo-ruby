@@ -18,12 +18,12 @@ module Paymongo
                   :origin,
                   :payment_intent_id,
                   :payout,
+                  :refunds,
                   :source,
                   :statement_descriptor,
                   :status,
                   :tax_amount,
                   :taxes,
-                  :refunds,
                   :available_at,
                   :created_at,
                   :credited_at,
@@ -48,12 +48,12 @@ module Paymongo
         @origin = api_resource.attributes['origin']
         @payment_intent_id = api_resource.attributes['payment_intent_id']
         @payout = api_resource.attributes['payout']
+        @refunds = api_resource.attributes['refunds']
         @source = api_resource.attributes['source']
         @statement_descriptor = api_resource.attributes['statement_descriptor']
         @status = api_resource.attributes['status']
         @tax_amount = api_resource.attributes['tax_amount']
         @taxes = api_resource.attributes['taxes']
-        @refunds = api_resource.attributes['refunds']
         @available_at = api_resource.attributes['available_at']
         @created_at = api_resource.attributes['created_at']
         @credited_at = api_resource.attributes['credited_at']
