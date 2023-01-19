@@ -80,6 +80,19 @@ payment_method = Paymongo::PaymentMethod.create({
     "phone": "09123456789"
   }
 })
+
+# retrieve refund
+Paymongo::Refund.retrieve('ref_gThWxhe9WtbFEZWmY2Qwzm6K')
+
+# create refund
+Paymongo::Refund.create(
+  amount: 10000,
+  payment_id: 'pay_H7igga6VQtGTbkJ35AHuQ4rM',
+  reason: 'requested_by_customer',
+  metadata: {
+    merchant: 'test value'
+  }
+)
 ```
 
 ## Verifying webhook signature
