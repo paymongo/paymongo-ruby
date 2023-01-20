@@ -113,6 +113,24 @@ webhook = Paymongo::Webhook.update('hook_W5thFLFVmWDze1kMR7EB4o2c',
 )
 ```
 
+## Links
+
+```ruby
+link = Paymongo::Link.retrieve('link_...')
+
+link = Paymongo::Link.archive(link.id)
+
+link = Paymongo::Link.unarchive(link.id)
+
+Paymongo::Link.create(
+  amount: 10000,
+  description: 'link description',
+  remarks: 'link remarks'
+)
+
+links = Paymongo::Link.all(reference_number: '1234abc')
+```
+
 ## Verifying webhook signature
 
 - TBD
