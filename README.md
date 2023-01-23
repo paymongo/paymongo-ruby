@@ -70,17 +70,17 @@ Paymongo::PaymentMethod.retrieve('pm_BhBBmUpQrbkFquBdBL5JxhuG')
 payment_method = Paymongo::PaymentMethod.create({
   type: 'gcash',
   billing: {
-    "address": {
-      "line1": "test line 1",
-      "line2": "test line 2",
-      "city": "Antipolo",
-      "state": "Rizal",
-      "postal_code": "1870",
-      "country": "PH"
+    address: {
+      line1: 'test line 1',
+      line2: 'test line 2',
+      city: 'Antipolo',
+      state: 'Rizal',
+      postal_code: '1870',
+      country: 'PH'
     },
-    "email": "travis-spd@gmail.comm",
-    "name": "John Dog",
-    "phone": "09123456789"
+    email: 'travis-spd@gmail.com',
+    name: 'John Dog',
+    phone: '09123456789'
   }
 })
 
@@ -130,95 +130,15 @@ Paymongo::Link.create(
 
 links = Paymongo::Link.all(reference_number: '1234abc')
 # attach PIPM
-payment_intent = Paymongo::PaymentIntent.create({
-  "amount": 300000,
-  "payment_method_allowed": [
-    "gcash"
-  ],
-  "description": "Bone brush",
-  "statement_descriptor": "BarkerShop",
-  "currency": "PHP"
-})
-
-payment_method = Paymongo::PaymentMethod.create({
-  type: 'gcash',
-  billing: {
-    "address": {
-      "line1": "test line 1",
-      "line2": "test line 2",
-      "city": "Antipolo",
-      "state": "Rizal",
-      "postal_code": "1870",
-      "country": "PH"
-    },
-    "email": "travis-spd@gmail.comm",
-    "name": "Miguel Mercado",
-    "phone": "09272582291"
-  }
-})
-
 Paymongo::PaymentIntent.attach(payment_intent.id, {
   payment_method: payment_method.id,
   return_url: 'https://test/success'
 })
 
 # cancel payment intent
-payment_intent = Paymongo::PaymentIntent.create({
-  "amount": 300000,
-  "payment_method_allowed": [
-    "gcash"
-  ],
-  "description": "Bone brush",
-  "statement_descriptor": "BarkerShop",
-  "currency": "PHP"
-})
-
 Paymongo::PaymentIntent.cancel(payment_intent.id)
 
 # capture payment intent
-payment_intent = Paymongo::PaymentIntent.create({
-  "amount": 10000,
-  "payment_method_allowed": [
-    "card"
-  ],
-  "payment_method_options": {
-    "card": {
-      "request_three_d_secure": "any"
-    }
-  },
-  "description": "Ube Cheese Pandesal",
-  "statement_descriptor": "BakeryShop",
-  "currency": "PHP",
-  "capture_type": "manual"
-})
-
-payment_method = Paymongo::PaymentMethod.create({
-  "type": "card",
-  "details": {
-    "card_number": "5111111111111118",
-    "exp_month": 3,
-    "exp_year": 2025,
-    "cvc": "123"
-  },
-  "billing": {
-    "address": {
-      "line1": "test line 1",
-      "line2": "test line 2",
-      "city": "Antipolo",
-      "state": "Rizal",
-      "postal_code": "1870",
-      "country": "PH"
-    },
-    "email": "juan@gmail.comm",
-    "name": "Juan dela cruz",
-    "phone": "09176318683"
-  }
-})
-
-attach = Paymongo::PaymentIntent.attach(payment_intent.id, {
-  payment_method: payment_method.id
-})
-
 Paymongo::PaymentIntent.capture(payment_intent.id, {"amount": payment_intent.amount})
 ```
 
