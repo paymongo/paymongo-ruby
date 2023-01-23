@@ -109,8 +109,17 @@ Paymongo::Refund.create(
   metadata: {
     merchant: 'test value'
 
+# retrieve all webhooks
+webhooks = Paymongo::Webhook.all()
+
 # retrieve webhook
 Paymongo::Webhook.retrieve('hook_W5thFLFVmWDze1kMR7EB4o2c')
+
+# disable webhook
+Paymongo::Webhook.disable('hook_...')
+
+# enable webhook
+Paymongo::Webhook.enable('hook_...')
 
 # create webhook
 webhook = Paymongo::Webhook.create(
