@@ -23,6 +23,11 @@ module Paymongo
     def self.initiate_request(method:, params: {}, uri:)
       case method
       when :get
+        unless params.empty?
+          encoded_params = URI.encode_www_form(params)
+          uri = [uri, encoded_params].join('?')
+        end
+
         request = Net::HTTP::Get.new(uri)
       when :post
         request = Net::HTTP::Post.new(uri)
