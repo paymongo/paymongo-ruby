@@ -84,6 +84,18 @@ payment_method = Paymongo::PaymentMethod.create({
   }
 })
 
+# attach PIPM
+Paymongo::PaymentIntent.attach(payment_intent.id, {
+  payment_method: payment_method.id,
+  return_url: 'https://test/success'
+})
+
+# cancel payment intent
+Paymongo::PaymentIntent.cancel(payment_intent.id)
+
+# capture payment intent
+Paymongo::PaymentIntent.capture(payment_intent.id, {"amount": payment_intent.amount})
+
 # retrieve refund
 Paymongo::Refund.retrieve('ref_gThWxhe9WtbFEZWmY2Qwzm6K')
 
@@ -129,17 +141,6 @@ Paymongo::Link.create(
 )
 
 links = Paymongo::Link.all(reference_number: '1234abc')
-# attach PIPM
-Paymongo::PaymentIntent.attach(payment_intent.id, {
-  payment_method: payment_method.id,
-  return_url: 'https://test/success'
-})
-
-# cancel payment intent
-Paymongo::PaymentIntent.cancel(payment_intent.id)
-
-# capture payment intent
-Paymongo::PaymentIntent.capture(payment_intent.id, {"amount": payment_intent.amount})
 ```
 
 ## Verifying webhook signature
