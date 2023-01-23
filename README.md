@@ -167,21 +167,21 @@ end
 ## Customers
 
 customer = Paymongo::Customer.create({
+  default_device: 'phone',
+  email: 'test@test.test',
   first_name: 'Pay',
   last_name: 'Mongo',
   phone: '+624123456789',
-  email: 'test@test.test',
-  default_device: 'phone',
 })
 
 Paymongo::Customer.retrieve(customer.id)
 
 Paymongo::Customer.update(customer.id, {
+  default_device: 'phone',
+  email: 'test@test2.test',
   first_name: 'Pay_',
   last_name: 'Mongo_',
   phone: '+649223456789',
-  email: 'test@test2.test',
-  default_device: 'phone',
 })
 
 Paymongo::Customer.delete(customer.id)
