@@ -113,13 +113,13 @@ Paymongo::Refund.create(
 webhooks = Paymongo::Webhook.all()
 
 # retrieve webhook
-Paymongo::Webhook.retrieve('hook_W5thFLFVmWDze1kMR7EB4o2c')
+webhook = Paymongo::Webhook.retrieve('hook_...')
 
 # disable webhook
-Paymongo::Webhook.disable('hook_...')
+webhook = Paymongo::Webhook.disable('hook_...')
 
 # enable webhook
-Paymongo::Webhook.enable('hook_...')
+webhook = Paymongo::Webhook.enable('hook_...')
 
 # create webhook
 webhook = Paymongo::Webhook.create(
