@@ -70,18 +70,32 @@ Paymongo::PaymentMethod.retrieve('pm_BhBBmUpQrbkFquBdBL5JxhuG')
 payment_method = Paymongo::PaymentMethod.create({
   type: 'gcash',
   billing: {
-    "address": {
-      "line1": "test line 1",
-      "line2": "test line 2",
-      "city": "Antipolo",
-      "state": "Rizal",
-      "postal_code": "1870",
-      "country": "PH"
+    address: {
+      line1: 'test line 1',
+      line2: 'test line 2',
+      city: 'Antipolo',
+      state: 'Rizal',
+      postal_code: '1870',
+      country: 'PH'
     },
-    "email": "travis-spd@gmail.comm",
-    "name": "John Dog",
-    "phone": "09123456789"
+    email: 'travis-spd@gmail.com',
+    name: 'John Dog',
+    phone: '09123456789'
   }
+})
+
+# attach PIPM
+Paymongo::PaymentIntent.attach(payment_intent.id, {
+  payment_method: payment_method.id,
+  return_url: 'https://test/success'
+})
+
+# cancel payment intent
+Paymongo::PaymentIntent.cancel(payment_intent.id)
+
+# capture payment intent
+Paymongo::PaymentIntent.capture(payment_intent.id, {
+  amount: payment_intent.amount
 })
 
 # retrieve refund

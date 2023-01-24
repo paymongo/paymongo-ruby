@@ -16,6 +16,7 @@ Gem::Specification.new do |s|
     "lib/paymongo/entities/payment_method.rb",
     "lib/paymongo/entities/refund.rb",
     "lib/paymongo/entities/webhook.rb",
+    "lib/paymongo/entities/attributes/payment_intents/next_action.rb",
     "lib/paymongo/api_resource.rb",
     "lib/paymongo/paymongo_client.rb",
     "lib/paymongo/paymongo_config.rb",
