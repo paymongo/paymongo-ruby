@@ -94,7 +94,9 @@ Paymongo::PaymentIntent.attach(payment_intent.id, {
 Paymongo::PaymentIntent.cancel(payment_intent.id)
 
 # capture payment intent
-Paymongo::PaymentIntent.capture(payment_intent.id, {"amount": payment_intent.amount})
+Paymongo::PaymentIntent.capture(payment_intent.id, {
+  amount: payment_intent.amount
+})
 
 # retrieve refund
 Paymongo::Refund.retrieve('ref_gThWxhe9WtbFEZWmY2Qwzm6K')
