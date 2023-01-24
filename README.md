@@ -164,21 +164,24 @@ rescue Paymongo::Errors::AuthenticationError => e
   puts e.errors.first.detail
   puts e.errors.first.source
 end
+```
+
 ## Customers
 
-customer = Paymongo::Customer.create({
+```ruby
+customer =Paymongo::Customer.create(
   default_device: 'phone',
   email: 'test@test.test',
   first_name: 'Pay',
   last_name: 'Mongo',
   phone: '+624123456789',
-})
+)
 
 Paymongo::Customer.retrieve(customer.id)
 
 Paymongo::Customer.update(customer.id, {
   default_device: 'phone',
-  email: 'test@test2.test',
+  email: 'test@paymongo.com',
   first_name: 'Pay_',
   last_name: 'Mongo_',
   phone: '+649223456789',
