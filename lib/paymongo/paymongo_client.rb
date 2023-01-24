@@ -11,16 +11,29 @@ module Paymongo
         http.request(request)
       end
 
-      json_response_body = JSON.parse(response.body)
+      self.handle_error(response) unless self.successful?(response)
 
-      unless self.successful?(response)
-        raise StandardError.new(json_response_body['errors'].first['detail'])
-      end
+      json_response_body = JSON.parse(response.body)
 
       Paymongo::ApiResource.new(json_response_body)
     end
 
-    def self.initiate_request(method:, params: {}, uri:)
+    private_class_method def self.handle_error(response)
+      json_response_body = JSON.parse(response.body)
+
+      case response.code
+      when '400'
+        raise Paymongo::Errors::InvalidRequestError.new(json_response_body)
+      when '401'
+        raise Paymongo::Errors::AuthenticationError.new(json_response_body)
+      when '404'
+        raise Paymongo::Errors::ResourceNotFoundError.new(json_response_body)
+      else
+        raise Paymongo::Errors::BaseError.new(json_response_body)
+      end
+    end
+
+    private_class_method def self.initiate_request(method:, params: {}, uri:)
       case method
       when :get
         unless params.empty?
@@ -42,7 +55,7 @@ module Paymongo
       request
     end
 
-    def self.successful?(response)
+    private_class_method def self.successful?(response)
       response.code == '200'
     end
   end

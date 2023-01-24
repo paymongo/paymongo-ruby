@@ -154,6 +154,17 @@ Paymongo::Link.create(
 links = Paymongo::Link.all(reference_number: '1234abc')
 ```
 
+## Handle errors
+```ruby
+begin
+  payment_intent = Paymongo::PaymentIntent.retrieve('pi_...')
+rescue Paymongo::Errors::AuthenticationError => e
+  puts e.errors.first.code
+  puts e.errors.first.detail
+  puts e.errors.first.source
+end
+```
+
 ## Verifying webhook signature
 
 - TBD
