@@ -35,6 +35,8 @@ module Paymongo
 
     private_class_method def self.initiate_request(method:, params: {}, uri:)
       case method
+      when :delete
+        request = Net::HTTP::Delete.new(uri)
       when :get
         unless params.empty?
           encoded_params = URI.encode_www_form(params)

@@ -155,6 +155,7 @@ links = Paymongo::Link.all(reference_number: '1234abc')
 ```
 
 ## Handle errors
+
 ```ruby
 begin
   payment_intent = Paymongo::PaymentIntent.retrieve('pi_...')
@@ -163,6 +164,30 @@ rescue Paymongo::Errors::AuthenticationError => e
   puts e.errors.first.detail
   puts e.errors.first.source
 end
+```
+
+## Customers
+
+```ruby
+Paymongo::Customer.create(
+  default_device: 'phone',
+  email: 'test@paymongo.com',
+  first_name: 'Pay',
+  last_name: 'Mongo',
+  phone: '+624123456789',
+)
+
+Paymongo::Customer.retrieve('cus_...')
+
+Paymongo::Customer.update('cus_...', {
+  default_device: 'phone',
+  email: 'test@paymongo.com',
+  first_name: 'Pay_',
+  last_name: 'Mongo_',
+  phone: '+649223456789',
+})
+
+Paymongo::Customer.delete('cus_...')
 ```
 
 ## Verifying webhook signature
