@@ -11,12 +11,17 @@ require 'paymongo/entities/payment_intent'
 require 'paymongo/entities/payment_method'
 require 'paymongo/entities/refund'
 require 'paymongo/entities/webhook'
-
 require 'paymongo/entities/attributes/payment_intents/next_action'
+
+require 'paymongo/errors/base_error'
+require 'paymongo/errors/authentication_error'
+require 'paymongo/errors/invalid_request_error'
+require 'paymongo/errors/resource_not_found_error'
 
 require 'paymongo/api_resource'
 require 'paymongo/paymongo_client'
 require 'paymongo/paymongo_config'
+require 'paymongo/paymongo_error'
 
 require 'paymongo/services/base_service'
 require 'paymongo/services/link'
