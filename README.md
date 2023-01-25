@@ -169,7 +169,7 @@ end
 ## Customers
 
 ```ruby
-customer =Paymongo::Customer.create(
+Paymongo::Customer.create(
   default_device: 'phone',
   email: 'test@paymongo.com',
   first_name: 'Pay',
@@ -177,9 +177,9 @@ customer =Paymongo::Customer.create(
   phone: '+624123456789',
 )
 
-Paymongo::Customer.retrieve(customer.id)
+Paymongo::Customer.retrieve('cus_...')
 
-Paymongo::Customer.update(customer.id, {
+Paymongo::Customer.update('cus_...', {
   default_device: 'phone',
   email: 'test@paymongo.com',
   first_name: 'Pay_',
@@ -187,7 +187,7 @@ Paymongo::Customer.update(customer.id, {
   phone: '+649223456789',
 })
 
-Paymongo::Customer.delete(customer.id)
+Paymongo::Customer.delete('cus_...')
 ```
 
 ## Verifying webhook signature
