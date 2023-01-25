@@ -4,7 +4,7 @@ PayMongo Ruby library provides ruby applications an easy access to the PayMongo 
 
 ## Pending TODOs
 
-- TBD
+- Unit Tests
 
 ## Documentation
 
@@ -41,24 +41,145 @@ require 'paymongo'
 # set api key config
 Paymongo.api_key = 'sk_test_...'
 
-# retrieve payment intent
+# Payment Method
+payment_method = Paymongo::PaymentMethod.retrieve('pm_...')
+
+# Retrieve attributes
+payment_method.id
+ => "pm_..."
+
+payment_method.type
+ => "card"
+
+Paymongo::PaymentMethod.create(
+  type: 'gcash',
+  billing: {
+    address: {
+      line1: 'test line 1',
+      line2: 'test line 2',
+      city: 'Antipolo',
+      state: 'Rizal',
+      postal_code: '1870',
+      country: 'PH'
+    },
+    email: 'test@paymongo.com',
+    name: 'Pay Mongo',
+    phone: '09123456789'
+  }
+)
+
+# Payment Intent
 Paymongo::PaymentIntent.retrieve('pi_...')
 
-# create payment intent
-payment_intent = Paymongo::PaymentIntent.create(
+Paymongo::PaymentIntent.create(
   amount: 10000,
   currency: 'PHP',
   description: 'Dog Treat',
   payment_method_allowed: ['gcash']
 )
 
-# retrieve payment intent id attribute
-payment_intent.id
- => "pi_qMSGj3UoBYm8BR3XDjcGZJHG"
+Paymongo::PaymentIntent.attach('pi_...', {
+  payment_method: 'pm_...',
+  return_url: 'https://test/success'
+})
 
-# retrieve payment intent status attribute
-payment_intent.status
- => "awaiting_payment_method"
+Paymongo::PaymentIntent.cancel('pi_...')
+
+Paymongo::PaymentIntent.capture('pi_...', {
+  amount: payment_intent.amount
+})
+
+# Payment
+Paymongo::Payment.retrieve('pay_...')
+
+# Refund
+Paymongo::Refund.retrieve('ref_...')
+
+Paymongo::Refund.create(
+  amount: 10000,
+  payment_id: 'pay_...',
+  reason: 'requested_by_customer',
+  metadata: {
+    merchant: 'test value'
+  }
+)
+```
+
+## Customers
+
+```ruby
+Paymongo::Customer.create(
+  default_device: 'phone',
+  email: 'test@paymongo.com',
+  first_name: 'Pay',
+  last_name: 'Mongo',
+  phone: '+624123456789',
+)
+
+Paymongo::Customer.retrieve('cus_...')
+
+Paymongo::Customer.update('cus_...', {
+  default_device: 'phone',
+  email: 'test@paymongo.com',
+  first_name: 'Pay_',
+  last_name: 'Mongo_',
+  phone: '+649223456789',
+})
+
+Paymongo::Customer.delete('cus_...')
+```
+
+## Links
+
+```ruby
+Paymongo::Link.retrieve('link_...')
+
+Paymongo::Link.archive('link_...')
+
+Paymongo::Link.unarchive('link_...')
+
+Paymongo::Link.create(
+  amount: 10000,
+  description: 'link description',
+  remarks: 'link remarks'
+)
+
+links = Paymongo::Link.all(reference_number: '1234abc')
+```
+
+## Webhooks
+
+```ruby
+Paymongo::Webhook.retrieve('hook_...')
+
+Paymongo::Webhook.create(
+  events: ['payment.refunded', 'payment.refund.updated'],
+  url: 'http://localhost:3100/webhook'
+)
+
+Paymongo::Webhook.disable('hook_...')
+
+Paymongo::Webhook.enable('hook_...')
+
+Paymongo::Webhook.update('hook_...', {
+  events: ['payment.paid'],
+  url: 'http://localhost:3101/webhook'
+})
+
+webhooks = Paymongo::Webhook.all()
+```
+
+## Handle errors
+
+```ruby
+begin
+  payment_intent = Paymongo::PaymentIntent.retrieve('pi_...')
+rescue Paymongo::Errors::AuthenticationError => e
+  # Handle error
+  puts e.errors.first.code
+  puts e.errors.first.detail
+  puts e.errors.first.source
+end
 ```
 
 ## Verifying webhook signature

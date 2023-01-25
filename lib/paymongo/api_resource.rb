@@ -2,12 +2,18 @@ module Paymongo
   class ApiResource
     attr_reader :id,
                 :attributes,
-                :data
+                :data,
+                :has_more
 
     def initialize(response)
-      @id = response['data']['id']
-      @attributes = response['data']['attributes']
-      @data = response['data']
+      @data = response['data'] || response
+
+      if @data.respond_to?(:has_key?) && @data.has_key?('attributes')
+        @id = @data['id']
+        @attributes = @data['attributes']
+      end
+
+      @has_more = response['has_more']
     end
   end
 end
