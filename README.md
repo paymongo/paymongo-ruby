@@ -171,7 +171,7 @@ end
 ```ruby
 customer =Paymongo::Customer.create(
   default_device: 'phone',
-  email: 'test@test.test',
+  email: 'test@paymongo.com',
   first_name: 'Pay',
   last_name: 'Mongo',
   phone: '+624123456789',
