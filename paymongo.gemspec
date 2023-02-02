@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = "paymongo"
-  s.version     = "0.1.0"
+  s.version     = "0.1.1"
   s.summary     = "PayMongo Ruby"
   s.description = "PayMongo Ruby Library"
   s.author      = "PayMongo"
@@ -10,6 +10,7 @@ Gem::Specification.new do |s|
     "lib/paymongo/entities/base_entity.rb",
     "lib/paymongo/entities/billing_entity.rb",
     "lib/paymongo/entities/customer.rb",
+    "lib/paymongo/entities/event.rb",
     "lib/paymongo/entities/link.rb",
     "lib/paymongo/entities/listing.rb",
     "lib/paymongo/entities/payment.rb",
@@ -22,6 +23,8 @@ Gem::Specification.new do |s|
     "lib/paymongo/errors/base_error.rb",
     "lib/paymongo/errors/invalid_request_error.rb",
     "lib/paymongo/errors/resource_not_found_error.rb",
+    "lib/paymongo/errors/signature_verification_error.rb",
+    "lib/paymongo/errors/unexpected_value_error.rb",
     "lib/paymongo/api_resource.rb",
     "lib/paymongo/paymongo_client.rb",
     "lib/paymongo/paymongo_config.rb",
