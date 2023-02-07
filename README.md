@@ -185,4 +185,22 @@ end
 
 ## Verifying webhook signature
 
-- TBD
+```ruby
+begin
+  payload = '{"data":{"id":"evt_...","type":"event","attributes":{"type":"source.chargeable"},"created_at":1675323264}}}'
+  signature_header = 't=1675323267,te=,li=99f...'
+  webhook_secret_key = 'whsk_...'
+
+  event = Paymongo::Webhook.construct_event(
+    payload: payload,
+    signature_header: signature_header,
+    webhook_secret_key: webhook_secret_key
+  )
+
+  event.id
+  event.type
+  event.resource
+rescue Paymongo::Errors::SignatureVerificationError => e
+  # Handle invalid signature
+end
+```
