@@ -1,12 +1,12 @@
 Gem::Specification.new do |s|
-  s.name        = "paymongo"
+  s.name        = "paymongo-ruby"
   s.version     = "0.1.1"
   s.summary     = "PayMongo Ruby"
   s.description = "PayMongo Ruby Library"
   s.author      = "PayMongo"
   s.email       = "support@paymongo.com"
   s.files       = [
-    "lib/paymongo.rb",
+    "lib/paymongo-ruby.rb",
     "lib/paymongo/entities/base_entity.rb",
     "lib/paymongo/entities/billing_entity.rb",
     "lib/paymongo/entities/customer.rb",
