@@ -4,6 +4,7 @@ PayMongo Ruby library provides ruby applications an easy access to the PayMongo 
 
 ## Pending TODOs
 
+- Publish to rubygems
 - Unit Tests
 
 ## Documentation
@@ -16,7 +17,7 @@ See the [PayMongo API docs](https://developers.paymongo.com/reference/getting-st
 
 ## Installation
 
-You don't need this source code unless you want to modify the gem. If you just
+**TODO** You don't need this source code unless you want to modify the gem. If you just
 want to use the package, just run:
 
 ```sh
