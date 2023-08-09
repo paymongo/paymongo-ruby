@@ -3,13 +3,11 @@ module Paymongo
     URI = 'payment_intents'
 
     def self.attach(id, payload)
-      payload[:origin] = 'ruby'
-
       self.request(
         method: :post,
         object: Paymongo::Entities::PaymentIntent,
         path: "#{self::URI}/#{id}/attach",
-        payload: payload
+        payload: payload.merge(origin: 'ruby')
       )
     end
 
