@@ -3,6 +3,8 @@ module Paymongo
     URI = 'payment_intents'
 
     def self.attach(id, payload)
+      payload[:origin] = 'ruby'
+
       self.request(
         method: :post,
         object: Paymongo::Entities::PaymentIntent,
