@@ -32,7 +32,6 @@ module Paymongo
         @statement_descriptor = api_resource.attributes['statement_descriptor']
         @status = api_resource.attributes['status']
         @last_payment_error = api_resource.attributes['last_payment_error']
-        @origin = api_resource.attributes['origin']
         @payment_method_allowed = api_resource.attributes['payment_method_allowed']
         @payments = api_resource.attributes['payments'] #TODO: ENG-21218 PayMongo-Ruby - Map payments attribute to array of payment entities
         @next_action = next_action(api_resource.attributes['next_action'])
