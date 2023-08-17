@@ -7,7 +7,7 @@ module Paymongo
         method: :post,
         object: Paymongo::Entities::PaymentIntent,
         path: "#{self::URI}/#{id}/attach",
-        payload: payload
+        payload: payload.merge(origin: 'ruby')
       )
     end
 

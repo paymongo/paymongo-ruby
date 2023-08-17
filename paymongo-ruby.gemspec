@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = "paymongo-ruby"
-  s.version     = "0.1.1"
+  s.version     = "0.2.0"
   s.summary     = "PayMongo Ruby"
   s.description = "PayMongo Ruby Library"
   s.author      = "PayMongo"
